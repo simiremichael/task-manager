@@ -43,6 +43,7 @@ const TaskList: React.FC = () => {
       <h1 className="text-2xl font-bold mb-4">Task Manager</h1>
       <TaskSearch onSearch={(query) => dispatch(setSearchQuery(query))} />
       <TaskFilters
+        //@ts-expect-error "TaskFilters" component expects filterType and value as arguments"
         onFilterChange={(filterType: string, value: string) => {
           if (filterType === "status") {
             dispatch(
