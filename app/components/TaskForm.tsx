@@ -16,6 +16,7 @@ interface Task {
 
 interface TaskFormProps {
   onClose: () => void;
+  selectedTask?: Task;
 }
 
 const TaskForm: React.FC<TaskFormProps> = ({ onClose, selectedTask }) => {
