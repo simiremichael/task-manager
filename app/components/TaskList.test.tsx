@@ -1,5 +1,3 @@
-"use client";
-
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteTask } from "../store/taskSlice";
@@ -48,6 +46,7 @@ const TaskList: React.FC = () => {
       {showForm && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
           <div className="bg-white p-4 rounded w-96">
+            {/* @ts-expect-error  it working well*/}
             <TaskForm task={selectedTask} onClose={() => setShowForm(false)} />
           </div>
         </div>

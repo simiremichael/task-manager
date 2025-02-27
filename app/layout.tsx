@@ -4,6 +4,8 @@ import "./globals.css";
 
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+// import { Suspense } from "react";
+// import Loading from "./loading";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -26,6 +28,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         {children}
+        {/* <Suspense fallback={<Loading />}>{children}</Suspense> */}
         <ToastContainer />
       </body>
     </html>
