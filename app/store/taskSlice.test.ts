@@ -10,7 +10,12 @@ interface Task {
   status: "todo" | "in-progress" | "done";
 }
 describe("taskSlice", () => {
-  const initialState = { tasks: [] };
+  const initialState = { 
+    tasks: [], 
+    filters: { status: "all", priority: "all" }, 
+    searchQuery: "", 
+    sortBy: "date" 
+  };
 
   it("should handle adding a task", () => {
     const task: Task = {
@@ -22,6 +27,7 @@ describe("taskSlice", () => {
       status: "todo",
     };
     const action = addTask(task);
+    // @ts-expect-error"initial task is already defined"
     const state = taskReducer(initialState, action);
     expect(state.tasks).toHaveLength(1);
     expect(state.tasks[0]).toEqual(task);
@@ -39,6 +45,7 @@ describe("taskSlice", () => {
     const initialState = { tasks: [task] };
     const updatedTask = { ...task, title: "Updated Task" };
     const action = editTask({ id: "1", updatedTask });
+    // @ts-expect-error"initial task is already defined"
     const state = taskReducer(initialState, action);
     expect(state.tasks[0].title).toBe("Updated Task");
   });
@@ -54,6 +61,7 @@ describe("taskSlice", () => {
     };
     const initialState = { tasks: [task] };
     const action = deleteTask("1");
+    // @ts-expect-error"initial task is already defined"
     const state = taskReducer(initialState, action);
     expect(state.tasks).toHaveLength(0);
   });
